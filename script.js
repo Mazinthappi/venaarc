@@ -184,7 +184,6 @@ if (mobileToggle && navMenu) {
 
 // Statistics Counter Animation
 const counters = document.querySelectorAll('.counter');
-let hasCounted = false;
 
 const animateCounters = () => {
     counters.forEach(counter => {
@@ -206,6 +205,12 @@ const animateCounters = () => {
     });
 };
 
+const resetCounters = () => {
+    counters.forEach(counter => {
+        counter.innerText = '0';
+    });
+};
+
 // Battery Charging Dynamic Percentage Animation
 const liveBatteryPerc = document.getElementById('live-battery-perc');
 if (liveBatteryPerc) {
@@ -224,9 +229,15 @@ const scrollObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
             entry.target.classList.add('animated');
-            if (entry.target.id === 'stats-container' && !hasCounted) {
+            if (entry.target.id === 'stats-container' && !entry.target.dataset.hasCounted) {
                 animateCounters();
-                hasCounted = true;
+                entry.target.dataset.hasCounted = 'true';
+            }
+        } else {
+            entry.target.classList.remove('animated');
+            if (entry.target.id === 'stats-container') {
+                resetCounters();
+                entry.target.dataset.hasCounted = '';
             }
         }
     });
