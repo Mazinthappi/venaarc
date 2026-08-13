@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Venaarc - Energizing Tomorrow | Sustainable Solar Solutions</title>
+    <meta name="description"
+        content="Venaarc is committed to delivering innovative and reliable solar energy solutions for homes, businesses, and industries. Powering progress sustainably.">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css?v=8">
+</head>
+
+<body>
+
+    <!-- Floating Particles Canvas -->
+    <canvas id="particles-canvas"></canvas>
+
+    <!-- 1. Solar Panel Loading Animation (Preloader Overlay) -->
+    <div id="preloader">
+        <svg class="solar-loader-svg" viewBox="0 0 200 200">
+            <!-- Sun with rotating rays -->
+            <g class="sun-rays-group">
+                <circle cx="100" cy="60" r="22" fill="#F5BE0B" filter="drop-shadow(0 0 10px #F5BE0B)" />
+                <!-- Sun rays -->
+                <line x1="100" y1="25" x2="100" y2="15" stroke="#F5BE0B" stroke-width="4" stroke-linecap="round" />
+                <line x1="100" y1="95" x2="100" y2="105" stroke="#F5BE0B" stroke-width="4" stroke-linecap="round" />
+                <line x1="65" y1="60" x2="55" y2="60" stroke="#F5BE0B" stroke-width="4" stroke-linecap="round" />
+                <line x1="135" y1="60" x2="145" y2="60" stroke="#F5BE0B" stroke-width="4" stroke-linecap="round" />
+                <line x1="75" y1="35" x2="68" y2="28" stroke="#F5BE0B" stroke-width="4" stroke-linecap="round" />
+                <line x1="125" y1="85" x2="132" y2="92" stroke="#F5BE0B" stroke-width="4" stroke-linecap="round" />
+                <line x1="75" y1="85" x2="68" y2="92" stroke="#F5BE0B" stroke-width="4" stroke-linecap="round" />
+                <line x1="125" y1="35" x2="132" y2="28" stroke="#F5BE0B" stroke-width="4" stroke-linecap="round" />
+            </g>
+
+            <!-- Light particles travelling from Sun to Solar Panel -->
+            <path class="light-particle" d="M100 82 L100 135" stroke="#F5BE0B" stroke-width="3" fill="none" />
+            <path class="light-particle" d="M80 75 L70 135" stroke="#E63946" stroke-width="2" fill="none" />
+            <path class="light-particle" d="M120 75 L130 135" stroke="#FF6B00" stroke-width="2" fill="none" />
+
+            <!-- Solar Panel Grid (Illuminating cells one by one) -->
+            <g class="panel-grid-group">
+                <polygon points="50,140 150,140 165,180 35,180" fill="#1C1121" stroke="#382542" stroke-width="2" />
+                <!-- 6 Cells -->
+                <polygon class="cell-1" points="53,142 83,142 80,158 48,158" />
+                <polygon class="cell-2" points="86,142 114,142 114,158 83,158" />
+                <polygon class="cell-3" points="117,142 147,142 152,158 117,158" />
+                <polygon class="cell-4" points="46,161 80,161 77,178 38,178" />
+                <polygon class="cell-5" points="83,161 114,161 114,178 80,178" />
+                <polygon class="cell-6" points="117,161 154,161 162,178 117,178" />
+            </g>
+        </svg>
+        <div class="loader-text">HARNESSING SOLAR ENERGY...</div>
+        <div class="energy-progress-container">
+            <div class="energy-progress-bar"></div>
+        </div>
+        <div class="loader-percentage" id="loader-perc">0%</div>
+    </div>
+
+    <!-- Floating Replay Preloader Button -->
+    <button class="btn-replay-loader" id="btn-replay" title="Replay Solar Panel Loading Animation">
+        <i class="fa-solid fa-rotate-right"></i> Play Loader Animation
+    </button>
+
+    <!-- PREMIUM FLOATING ROUNDED TRANSFORMING NAVBAR -->
+    <header id="header" class="floating-navbar">
+        <div class="nav-pill-wrapper">
+            <a href="#" class="logo">
+                <span class="logo-icon"><i class="fa-solid fa-bolt"></i></span>
+                <div class="logo-text">
+                    <h1>VENAARC</h1>
+                    <p>ENERGIZING TOMORROW</p>
+                </div>
+            </a>
+            <nav class="nav-menu">
+                <ul>
+                    <li><a href="#home" class="nav-link active">Home</a></li>
+                    <li><a href="#journey" class="nav-link">3D Solar Journey</a></li>
+                    <li><a href="#about" class="nav-link">About Us</a></li>
+                    <li><a href="#dashboard" class="nav-link">Live Storage</a></li>
+                    <li><a href="#solutions" class="nav-link">Solutions</a></li>
+                    <li><a href="#projects" class="nav-link">Projects</a></li>
+                    <li><a href="#contact" class="nav-link">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="nav-right-actions">
+                <button class="theme-toggle-btn" id="theme-toggle" title="Toggle Day/Night Mode">
+                    <i class="fa-solid fa-sun"></i>
+                </button>
+                <a href="#quote" class="btn btn-primary nav-cta">GET A QUOTE</a>
+                <button class="mobile-toggle"><i class="fa-solid fa-bars"></i></button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-overlay"></div>
+
+        <div class="container hero-content">
+            <h2 class="subtitle">ENERGIZING TOMORROW</h2>
+            <h1 class="title">Powering Progress<br><span>Sustainably</span></h1>
+            <p class="description">Venaarc is committed to delivering innovative and reliable solar energy solutions for
+                homes, businesses, and industries. Sustainable energy solutions for a brighter and cleaner future.</p>
+            <div class="hero-btns">
+                <a href="#journey" class="btn btn-primary">CINEMATIC JOURNEY</a>
+                <a href="#about" class="btn btn-outline">LEARN MORE</a>
+            </div>
+
+            <div class="hero-features">
+                <div class="feature">
+                    <i class="fa-solid fa-solar-panel"></i>
+                    <span>Solar EPC</span>
+                </div>
+                <div class="feature">
+                    <i class="fa-solid fa-gear"></i>
+                    <span>Engineering<br>Excellence</span>
+                </div>
+                <div class="feature">
+                    <i class="fa-solid fa-sun"></i>
+                    <span>Sustainable<br>Future</span>
+                </div>
+                <div class="feature">
+                    <i class="fa-solid fa-handshake-angle"></i>
+                    <span>End-to-End<br>Support</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CINEMATIC 3D SOLAR SCROLL JOURNEY SECTION (3 SCENES ONLY) -->
+    <section id="journey" class="cinematic-journey-wrapper">
+        <div class="cinematic-sticky-box">
+            <!-- 3D Render Canvas -->
+            <canvas id="cinematic-canvas"></canvas>
+
+            <!-- Dynamic Scene Content Overlay -->
+            <div class="cinematic-overlay-content">
+                <div class="cinematic-header-badge">
+                    <i class="fa-solid fa-clapperboard"></i> 3D SCROLL EXPERIENCE
+                </div>
+
+                <div class="scene-text-container" id="scene-card">
+                    <div class="scene-step-num" id="scene-step-lbl">SCENE 1 OF 3</div>
+                    <h2 class="scene-title" id="scene-title-txt">Scene 1: The Sunrise</h2>
+                    <p class="scene-description" id="scene-desc-txt">The journey begins as a warm, radiant horizon glow
+                        illuminates the landscape in dusk-to-dawn transition.</p>
+                    <div class="scene-stat-badge" id="scene-stat-txt">
+                        <i class="fa-solid fa-sun"></i> Solar Irradiance: 1,000 W/m²
+                    </div>
+                </div>
+
+                <div class="scene-progress-bar-container">
+                    <div class="scene-steps-indicators">
+                        <span class="step-indicator active" id="ind-1">1. Sunrise</span>
+                        <span class="step-indicator" id="ind-2">2. Energy Harvest</span>
+                        <span class="step-indicator" id="ind-3">3. Sustainable Future</span>
+                    </div>
+                    <div class="scene-progress-track">
+                        <div class="scene-progress-fill" id="scene-progress-fill"></div>
+                    </div>
+                    <div class="scroll-prompt-down">
+                        <i class="fa-solid fa-chevron-down"></i> Scroll down to control the 3D energy story
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Statistics Section -->
+    <section class="statistics">
+        <div class="container stats-grid">
+            <div class="stat-item scroll-animate">
+                <h3 class="counter" data-target="150">0</h3>
+                <span class="plus">+</span>
+                <p>Projects Completed</p>
+            </div>
+            <div class="stat-item scroll-animate">
+                <h3 class="counter" data-target="50">0</h3>
+                <span class="plus">+</span>
+                <p>MW Installed</p>
+            </div>
+            <div class="stat-item scroll-animate">
+                <h3 class="counter" data-target="100">0</h3>
+                <span class="plus">+</span>
+                <p>Happy Clients</p>
+            </div>
+            <div class="stat-item scroll-animate">
+                <h3 class="counter" data-target="5">0</h3>
+                <span class="plus">+</span>
+                <p>Years of Excellence</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 2. Battery Charging Loading & Energy Dashboard Animation Section -->
+    <section id="dashboard" class="section-padding bg-darker">
+        <div class="container">
+            <div class="section-header text-center">
+                <h4 class="section-subtitle">REAL-TIME TELEMETRY</h4>
+                <h2 class="section-title">Solar Energy & Storage Flow</h2>
+                <p>Live simulation of solar generation, power transfer lines, battery storage fill, and system
+                    efficiency gauges.</p>
+            </div>
+
+            <div class="battery-dashboard-section scroll-animate">
+                <div class="dashboard-title">
+                    <div>
+                        <h3><i class="fa-solid fa-solar-panel text-primary"></i> Live Solar Generation Status</h3>
+                        <p style="font-size:13px; color:var(--text-muted);">Inverter LED Status: <span
+                                class="inverter-status-dot"></span> ACTIVE (38.4 kW Output)</p>
+                    </div>
+                    <span class="badge"
+                        style="background:rgba(245,190,11,0.15); color:var(--solar-yellow); padding:6px 14px; border-radius:20px; font-weight:600; font-size:13px;">
+                        <i class="fa-solid fa-bolt"></i> Grid Feed: Normal
+                    </span>
+                </div>
+
+                <div class="battery-charging-flow">
+                    <!-- Flow Node 1: Solar Panels -->
+                    <div class="flow-node solar-panel-card">
+                        <i class="fa-solid fa-sun-plant-wilt"></i>
+                        <h4>Solar Array</h4>
+                        <span>Harvesting Energy</span>
+                        <div style="margin-top:10px; font-weight:700; color:var(--solar-yellow);">+4.8 kW</div>
+                    </div>
+
+                    <!-- Flow Node 2: Animated Flow Connector to Battery -->
+                    <div class="energy-connector-container">
+                        <span style="font-size:12px; font-weight:600; color:var(--primary-red);">ENERGY TRANSFER</span>
+                        <svg class="flow-line-svg" viewBox="0 0 200 40">
+                            <path d="M 10 20 Q 100 0 190 20" stroke="var(--border-color)" stroke-width="4"
+                                fill="none" />
+                            <path class="animated-spark" d="M 10 20 Q 100 0 190 20" stroke="var(--primary-red)"
+                                stroke-width="4" fill="none" />
+                        </svg>
+
+                        <!-- Battery Charging Box Animation -->
+                        <div class="battery-charging-box">
+                            <div class="battery-charging-fill"></div>
+                        </div>
+                        <div class="battery-percentage-text" id="live-battery-perc">85%</div>
+                        <span style="font-size:13px; color:var(--text-muted);">Battery Storage Level</span>
+                    </div>
+
+                    <!-- Flow Node 3: Solar Efficiency Gauge -->
+                    <div class="flow-node efficiency-gauge-container">
+                        <svg class="gauge-circle-svg" viewBox="0 0 100 100">
+                            <circle class="gauge-bg" cx="50" cy="50" r="45" stroke-width="8" fill="none" />
+                            <circle class="gauge-fill" cx="50" cy="50" r="45" stroke-width="8" fill="none"
+                                transform="rotate(-90 50 50)" />
+                            <text x="50" y="55" font-weight="800" font-size="20" fill="var(--text-light)"
+                                text-anchor="middle">96%</text>
+                        </svg>
+                        <h4 style="margin-top:10px;">System Efficiency</h4>
+                        <span>Peak Inverter Performance</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Us Section -->
+    <section id="about" class="about section-padding">
+        <div class="container about-container">
+            <div class="about-text scroll-animate slide-left">
+                <h4 class="section-subtitle">ABOUT US</h4>
+                <h2 class="section-title">Who We Are</h2>
+                <p>At Venaarc, our story is one of innovation and commitment to a greener planet. Our vision is to
+                    democratize renewable energy and make it accessible to everyone. Our mission is to provide top-tier,
+                    reliable, and efficient solar solutions.</p>
+                <p>With a highly experienced team of engineers and sustainability experts, we carry all major
+                    certifications and adhere to the highest industry standards. Customers trust us for our
+                    transparency, quality, and unwavering post-installation support.</p>
+                <ul class="about-list">
+                    <li><i class="fa-solid fa-check"></i> Certified Professionals</li>
+                    <li><i class="fa-solid fa-check"></i> Award-winning Service</li>
+                    <li><i class="fa-solid fa-check"></i> 24/7 Customer Support</li>
+                </ul>
+            </div>
+            <div class="about-image scroll-animate slide-right">
+                <div class="image-wrapper">
+                    <img src="images/project_commercial_1786602265738.png" alt="Commercial Solar Project">
+                    <div class="experience-badge">
+                        <h3>5+</h3>
+                        <p>Years<br>Experience</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Solutions Section -->
+    <section id="solutions" class="solutions section-padding bg-darker">
+        <div class="container">
+            <div class="section-header text-center">
+                <h4 class="section-subtitle">OUR SERVICES</h4>
+                <h2 class="section-title">Solar Solutions</h2>
+                <p>Comprehensive energy solutions tailored to meet your specific needs.</p>
+            </div>
+            <div class="solutions-grid">
+                <div class="solution-card scroll-animate">
+                    <i class="fa-solid fa-house-chimney"></i>
+                    <h3>Residential Solar</h3>
+                    <p>Reduce your electricity bills and carbon footprint with our custom home solar systems.</p>
+                </div>
+                <div class="solution-card scroll-animate">
+                    <i class="fa-solid fa-building"></i>
+                    <h3>Commercial Solar</h3>
+                    <p>Empower your business with sustainable energy. Maximize ROI and corporate responsibility.</p>
+                </div>
+                <div class="solution-card scroll-animate">
+                    <i class="fa-solid fa-industry"></i>
+                    <h3>Industrial Solar</h3>
+                    <p>Large-scale solar deployments designed for heavy energy consumption and efficiency.</p>
+                </div>
+                <div class="solution-card scroll-animate">
+                    <i class="fa-solid fa-network-wired"></i>
+                    <h3>Solar EPC</h3>
+                    <p>End-to-end Engineering, Procurement, and Construction for utility-scale projects.</p>
+                </div>
+                <div class="solution-card scroll-animate">
+                    <i class="fa-solid fa-tools"></i>
+                    <h3>Maintenance & AMC</h3>
+                    <p>Regular maintenance and Annual Maintenance Contracts to keep your system at peak performance.</p>
+                </div>
+                <div class="solution-card scroll-animate">
+                    <i class="fa-solid fa-plug-circle-bolt"></i>
+                    <h3>Other Services</h3>
+                    <p>Energy audits, net metering assistance, and smart grid integrations.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section id="products" class="products section-padding">
+        <div class="container">
+            <div class="section-header text-center">
+                <h4 class="section-subtitle">TECHNOLOGY</h4>
+                <h2 class="section-title">Our Products</h2>
+            </div>
+            <div class="products-grid">
+                <div class="product-card scroll-animate">
+                    <div class="product-icon"><i class="fa-solid fa-solar-panel"></i></div>
+                    <h3>Solar Panels</h3>
+                    <p>High-efficiency monocrystalline and polycrystalline panels from top global brands.</p>
+                </div>
+                <div class="product-card scroll-animate">
+                    <div class="product-icon"><i class="fa-solid fa-charging-station"></i></div>
+                    <h3>Inverters</h3>
+                    <p>Smart, grid-tied, off-grid, and hybrid inverters for optimal energy conversion.</p>
+                </div>
+                <div class="product-card scroll-animate">
+                    <div class="product-icon"><i class="fa-solid fa-car-battery"></i></div>
+                    <h3>Batteries</h3>
+                    <p>Long-lasting lithium-ion and tubular batteries for reliable energy storage.</p>
+                </div>
+                <div class="product-card scroll-animate">
+                    <div class="product-icon"><i class="fa-solid fa-layer-group"></i></div>
+                    <h3>Mounting Structures</h3>
+                    <p>Durable, corrosion-resistant structures for all roof types and ground mounts.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="projects section-padding bg-darker">
+        <div class="container">
+            <div class="section-header">
+                <h4 class="section-subtitle">OUR WORK</h4>
+                <h2 class="section-title">Featured Projects</h2>
+            </div>
+            <div class="projects-grid">
+                <div class="project-card scroll-animate slide-left">
+                    <div class="project-img">
+                        <img src="images/project_residential_1786602252499.png" alt="Residential Project">
+                        <div class="project-overlay">
+                            <a href="#" class="view-btn"><i class="fa-solid fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <h3>Green Valley Residence</h3>
+                        <p>Residential • 15kW Capacity • California</p>
+                    </div>
+                </div>
+                <div class="project-card scroll-animate slide-right">
+                    <div class="project-img">
+                        <img src="images/project_commercial_1786602265738.png" alt="Commercial Project">
+                        <div class="project-overlay">
+                            <a href="#" class="view-btn"><i class="fa-solid fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <h3>Tech Hub Industrial Park</h3>
+                        <p>Industrial • 1.2MW Capacity • Texas</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="gallery section-padding">
+        <div class="container">
+            <div class="section-header text-center">
+                <h4 class="section-subtitle">OUR GALLERY</h4>
+                <h2 class="section-title">A Glimpse of Our Work</h2>
+            </div>
+            <div class="gallery-grid"
+                style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 18px;">
+                <img class="scroll-animate" src="images/project_residential_1786602252499.png" alt="Gallery Image 1"
+                    style="width: 100%; height: 220px; object-fit: cover; border-radius: 10px; transition: transform 0.4s ease;"
+                    onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+                <img class="scroll-animate" src="images/project_commercial_1786602265738.png" alt="Gallery Image 2"
+                    style="width: 100%; height: 220px; object-fit: cover; border-radius: 10px; transition: transform 0.4s ease;"
+                    onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+                <img class="scroll-animate" src="images/hero_background_1786601991936.png" alt="Gallery Image 3"
+                    style="width: 100%; height: 220px; object-fit: cover; border-radius: 10px; transition: transform 0.4s ease;"
+                    onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us Section -->
+    <section id="why-us" class="why-us section-padding">
+        <div class="container why-us-container">
+            <div class="why-us-content scroll-animate slide-left">
+                <h4 class="section-subtitle">ADVANTAGE</h4>
+                <h2 class="section-title">Why Choose Venaarc?</h2>
+                <div class="features-list">
+                    <div class="feature-item">
+                        <i class="fa-solid fa-medal text-primary"></i>
+                        <div>
+                            <h4>Uncompromising Quality</h4>
+                            <p>We source only tier-1 components ensuring longevity and high yield.</p>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fa-solid fa-shield-halved text-primary"></i>
+                        <div>
+                            <h4>Extended Warranty</h4>
+                            <p>Up to 25 years of performance warranty on our solar panels.</p>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fa-solid fa-helmet-safety text-primary"></i>
+                        <div>
+                            <h4>Installation Expertise</h4>
+                            <p>Flawless execution by certified, highly-trained professionals.</p>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fa-solid fa-sack-dollar text-primary"></i>
+                        <div>
+                            <h4>Easy Financing</h4>
+                            <p>Flexible payment plans and help with government subsidies.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="why-us-image scroll-animate slide-right">
+                <div class="cta-box">
+                    <h3>Ready to switch to solar?</h3>
+                    <p>Get a free consultation and personalized quote today.</p>
+                    <a href="#quote" class="btn btn-primary">Request Free Quote</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="testimonials section-padding bg-darker">
+        <div class="container">
+            <div class="section-header text-center">
+                <h4 class="section-subtitle">CLIENT REVIEWS</h4>
+                <h2 class="section-title">What Our Customers Say</h2>
+            </div>
+            <div class="testimonial-slider scroll-animate">
+                <div class="testimonial-track">
+                    <!-- Testimonial 1 -->
+                    <div class="testimonial-card">
+                        <div class="stars">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                class="fa-solid fa-star"></i>
+                        </div>
+                        <p class="quote">"Venaarc completely transformed our factory's energy consumption. Their team
+                            was professional, and the installation was seamless. Highly recommended!"</p>
+                        <div class="client-info">
+                            <div class="client-details">
+                                <h4>John Doe</h4>
+                                <span>CEO, Manufacturing Inc.</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Testimonial 2 -->
+                    <div class="testimonial-card">
+                        <div class="stars">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i
+                                class="fa-solid fa-star-half-stroke"></i>
+                        </div>
+                        <p class="quote">"Switching to solar for our home was a big decision, but Venaarc made it easy.
+                            They handled everything from permits to installation perfectly."</p>
+                        <div class="client-info">
+                            <div class="client-details">
+                                <h4>Sarah Williams</h4>
+                                <span>Homeowner</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-controls">
+                    <button id="prevTestimonial"><i class="fa-solid fa-arrow-left"></i></button>
+                    <button id="nextTestimonial"><i class="fa-solid fa-arrow-right"></i></button>
+                </div>
+            </div>
+
+            <!-- Video Testimonial -->
+            <div class="video-testimonial scroll-animate">
+                <h3>Watch Our Client Success Stories</h3>
+                <div class="video-container">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/dQw4w9WgXcQ"
+                        title="YouTube video player" frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq section-padding">
+        <div class="container faq-container">
+            <div class="section-header text-center">
+                <h4 class="section-subtitle">KNOWLEDGE BASE</h4>
+                <h2 class="section-title">Frequently Asked Questions</h2>
+            </div>
+            <div class="accordion scroll-animate">
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <h3>What is the cost of installing a solar system?</h3>
+                        <i class="fa-solid fa-plus"></i>
+                    </div>
+                    <div class="accordion-content">
+                        <p>The cost varies based on your energy needs and the capacity of the system. We offer free
+                            assessments to provide an accurate quote tailored to your requirements.</p>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <h3>Are there government subsidies available?</h3>
+                        <i class="fa-solid fa-plus"></i>
+                    </div>
+                    <div class="accordion-content">
+                        <p>Yes, many governments offer subsidies and tax incentives for solar installations. Our team
+                            assists you in navigating and applying for these benefits.</p>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <h3>How long does the installation take?</h3>
+                        <i class="fa-solid fa-plus"></i>
+                    </div>
+                    <div class="accordion-content">
+                        <p>A typical residential installation takes 1-3 days, while commercial projects depend on the
+                            scale. We ensure a swift and non-disruptive process.</p>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <h3>How does Net Metering work?</h3>
+                        <i class="fa-solid fa-plus"></i>
+                    </div>
+                    <div class="accordion-content">
+                        <p>Net metering allows you to send excess electricity back to the grid in exchange for credits,
+                            which you can use when your panels aren't producing enough power (e.g., at night).</p>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <h3>What is the expected ROI?</h3>
+                        <i class="fa-solid fa-plus"></i>
+                    </div>
+                    <div class="accordion-content">
+                        <p>Most of our clients see a Return on Investment within 3 to 5 years, enjoying virtually free
+                            electricity for the remaining 20+ years of the system's lifespan.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact & Quote Section -->
+    <section id="contact" class="contact section-padding bg-darker">
+        <div class="container contact-container">
+            <div class="contact-info scroll-animate slide-left">
+                <h4 class="section-subtitle">GET IN TOUCH</h4>
+                <h2 class="section-title">Contact Us</h2>
+                <p>Have questions? Want a quote? Reach out to us directly or fill out the form.</p>
+                <div class="contact-details">
+                    <div class="contact-item">
+                        <div class="icon"><i class="fa-solid fa-location-dot"></i></div>
+                        <div>
+                            <h4>Location</h4>
+                            <p>123 Energy Park, Tech City, 10001</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="icon"><i class="fa-solid fa-phone"></i></div>
+                        <div>
+                            <h4>Phone / WhatsApp</h4>
+                            <p>+1 (800) 123-4567</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="icon"><i class="fa-solid fa-envelope"></i></div>
+                        <div>
+                            <h4>Email</h4>
+                            <p>hello@venaarc.com</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="map-container">
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3151.835434509374!2d144.9537353153163!3d-37.8172097420216!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad65d4c2b349649%3A0xb6899234e561db11!2sEnvato!5e0!3m2!1sen!2sus!4v1614227318055!5m2!1sen!2sus"
+                        width="100%" height="240" style="border:0; border-radius: 10px; margin-top: 2rem;"
+                        allowfullscreen="" loading="lazy"></iframe>
+                </div>
+            </div>
+
+            <div id="quote" class="quote-form-container scroll-animate slide-right">
+                <h3>Get a Free Quote</h3>
+                <form class="quote-form">
+                    <div class="form-group">
+                        <input type="text" placeholder="Full Name" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" placeholder="Email Address" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="tel" placeholder="Phone Number" required>
+                    </div>
+                    <div class="form-group">
+                        <select required>
+                            <option value="" disabled selected>Select Requirement</option>
+                            <option value="residential">Residential Solar</option>
+                            <option value="commercial">Commercial Solar</option>
+                            <option value="industrial">Industrial Solar</option>
+                            <option value="maintenance">Maintenance</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <textarea rows="4" placeholder="Message / Location details"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block">Submit Enquiry</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container footer-container">
+            <div class="footer-brand">
+                <a href="#" class="logo">
+                    <span class="logo-icon"><i class="fa-solid fa-bolt"></i></span>
+                    <div class="logo-text">
+                        <h2>VENAARC</h2>
+                    </div>
+                </a>
+                <p>Powering progress sustainably. We are dedicated to providing the best renewable energy solutions for
+                    a cleaner future.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#"><i class="fa-brands fa-youtube"></i></a>
+                    <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
+                </div>
+            </div>
+            <div class="footer-links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#journey">3D Solar Journey</a></li>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#dashboard">Live Telemetry</a></li>
+                    <li><a href="#projects">Our Work</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h3>Services</h3>
+                <ul>
+                    <li><a href="#">Residential Solar</a></li>
+                    <li><a href="#">Commercial Solar</a></li>
+                    <li><a href="#">Solar EPC</a></li>
+                    <li><a href="#">Maintenance</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom text-center">
+            <p>&copy; 2026 Venaarc. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js?v=8"></script>
+</body>
+
+</html>
