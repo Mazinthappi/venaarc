@@ -101,121 +101,59 @@ function handleNavbarScrollTransformation() {
 
 window.addEventListener('scroll', handleNavbarScrollTransformation);
 
-// CINEMATIC 3D SOLAR SCROLL JOURNEY RENDERER (CLEAN 3-SCENE FLOW)
-const journeyWrapper = document.getElementById('journey');
-const cinematicCanvas = document.getElementById('cinematic-canvas');
+// INTERACTIVE SOLAR TIMELINE SCRIPT
+const timelineWrapper = document.querySelector('.timeline-wrapper');
+const timelineSteps = document.querySelectorAll('.timeline-step');
+const progressFill = document.getElementById('timeline-progress-fill');
 
-const sceneStepLbl = document.getElementById('scene-step-lbl');
-const sceneTitleTxt = document.getElementById('scene-title-txt');
-const sceneDescTxt = document.getElementById('scene-desc-txt');
-const sceneStatTxt = document.getElementById('scene-stat-txt');
-const sceneProgressFill = document.getElementById('scene-progress-fill');
+if (timelineWrapper && timelineSteps.length > 0) {
+    window.addEventListener('scroll', () => {
+        const viewportCenter = window.innerHeight / 2;
+        let activeIndex = -1;
 
-const indicators = [
-    document.getElementById('ind-1'),
-    document.getElementById('ind-2'),
-    document.getElementById('ind-3')
-];
-
-if (journeyWrapper && cinematicCanvas) {
-    const cctx = cinematicCanvas.getContext('2d');
-    let cWidth, cHeight;
-
-    function resizeCinematicCanvas() {
-        cWidth = cinematicCanvas.width = journeyWrapper.querySelector('.cinematic-sticky-box').clientWidth;
-        cHeight = cinematicCanvas.height = journeyWrapper.querySelector('.cinematic-sticky-box').clientHeight;
-    }
-    window.addEventListener('resize', resizeCinematicCanvas);
-    resizeCinematicCanvas();
-
-    const scenesData = [
-        {
-            step: "SCENE 1 OF 3",
-            title: "Scene 1: The Sunrise",
-            desc: "The journey begins as a warm, radiant horizon glow illuminates the landscape in dusk-to-dawn transition.",
-            stat: "<i class='fa-solid fa-sun'></i> Solar Irradiance: 1,000 W/m²"
-        },
-        {
-            step: "SCENE 2 OF 3",
-            title: "Scene 2: Energy Harvest & Storage",
-            desc: "Photovoltaic technology converts solar radiation into DC electricity, feeding high-efficiency storage batteries.",
-            stat: "<i class='fa-solid fa-bolt'></i> Power Generation: 1.2 MW Generated"
-        },
-        {
-            step: "SCENE 3 OF 3",
-            title: "Scene 3: Sustainable Future",
-            desc: "Clean, reliable solar power energizes residential homes and commercial infrastructure with zero emissions.",
-            stat: "<i class='fa-solid fa-leaf'></i> Carbon Reduction: 4,500 Tons CO₂ Saved"
-        }
-    ];
-
-    function renderCinematicFrame(progress) {
-        cctx.clearRect(0, 0, cWidth, cHeight);
-
-        // Clamp progress
-        const p = Math.max(0, Math.min(1, progress));
-        if (sceneProgressFill) {
-            sceneProgressFill.style.width = (p * 100) + '%';
-        }
-
-        // Determine scene index (0 to 2 for 3 scenes)
-        const sceneIndex = Math.min(2, Math.floor(p * 3));
-
-        // Update Text Cards and Step Indicators
-        indicators.forEach((ind, i) => {
-            if (ind) {
-                if (i === sceneIndex) ind.classList.add('active');
-                else ind.classList.remove('active');
+        timelineSteps.forEach((step, index) => {
+            const rect = step.getBoundingClientRect();
+            const stepCenter = rect.top + rect.height / 2;
+            
+            // Check if step is above or at center
+            if (stepCenter < viewportCenter + 150) {
+                activeIndex = index;
             }
         });
 
-        const currentData = scenesData[sceneIndex];
-        if (currentData && sceneStepLbl && sceneStepLbl.innerText !== currentData.step) {
-            sceneStepLbl.innerText = currentData.step;
-            sceneTitleTxt.innerText = currentData.title;
-            sceneDescTxt.innerText = currentData.desc;
-            sceneStatTxt.innerHTML = currentData.stat;
+        timelineSteps.forEach((step, index) => {
+            step.classList.remove('active', 'passed');
+            if (index === activeIndex) {
+                step.classList.add('active');
+            } else if (index < activeIndex) {
+                step.classList.add('passed');
+            }
+        });
+
+        // Calculate line fill
+        if (activeIndex >= 0) {
+            const activeStep = timelineSteps[activeIndex];
+            const wrapperRect = timelineWrapper.getBoundingClientRect();
+            const activeStepRect = activeStep.getBoundingClientRect();
+            
+            // progress is from top of wrapper to center of active step
+            const fillHeight = (activeStepRect.top + activeStepRect.height / 2) - wrapperRect.top;
+            const totalHeight = wrapperRect.height;
+            let percentage = (fillHeight / totalHeight) * 100;
+            
+            if (percentage < 0) percentage = 0;
+            if (percentage > 100) percentage = 100;
+            
+            if (progressFill) {
+                progressFill.style.height = `${percentage}%`;
+            }
+        } else {
+            if (progressFill) progressFill.style.height = `0%`;
         }
-
-        // Clean Dark Background Sky Gradient matching Venaarc brand
-        const skyGradient = cctx.createLinearGradient(0, 0, 0, cHeight);
-        skyGradient.addColorStop(0, '#050505');
-        skyGradient.addColorStop(0.5, '#0A0A0A');
-        skyGradient.addColorStop(1, '#000000');
-
-        cctx.fillStyle = skyGradient;
-        cctx.fillRect(0, 0, cWidth, cHeight);
-
-        // Ground Horizon Line
-        const horizonY = cHeight * 0.75;
-
-        // Warm Horizon Ambient Glow on Scroll
-        const glowRadius = Math.min(cWidth, cHeight) * 0.65;
-        const glowY = horizonY - p * 100;
-        const ambientGlow = cctx.createRadialGradient(cWidth * 0.5, glowY, 10, cWidth * 0.5, glowY, glowRadius);
-        ambientGlow.addColorStop(0, `rgba(230, 28, 36, ${0.2 + p * 0.3})`);
-        ambientGlow.addColorStop(0.5, `rgba(245, 190, 11, ${0.1 + p * 0.2})`);
-        ambientGlow.addColorStop(1, 'rgba(0, 0, 0, 0)');
-
-        cctx.fillStyle = ambientGlow;
-        cctx.fillRect(0, 0, cWidth, cHeight);
-    }
-
-    // Window Scroll Handler for Pinned Section
-    window.addEventListener('scroll', () => {
-        const rect = journeyWrapper.getBoundingClientRect();
-        const wrapperHeight = journeyWrapper.clientHeight;
-        const windowHeight = window.innerHeight;
-
-        const scrollDist = -rect.top;
-        const maxScroll = wrapperHeight - windowHeight;
-        const progress = scrollDist / maxScroll;
-
-        renderCinematicFrame(progress);
     });
-
-    // Initial Frame
-    renderCinematicFrame(0);
+    
+    // Initial trigger
+    window.dispatchEvent(new Event('scroll'));
 }
 
 // Mobile Menu Toggle
