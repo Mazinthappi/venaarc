@@ -224,7 +224,7 @@ const scrollObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
             entry.target.classList.add('animated');
-            if (entry.target.classList.contains('stat-item') && !hasCounted) {
+            if (entry.target.id === 'stats-container' && !hasCounted) {
                 animateCounters();
                 hasCounted = true;
             }
