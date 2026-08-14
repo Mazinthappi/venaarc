@@ -15,10 +15,22 @@
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="style.css?v=8">
+    <link rel="stylesheet" href="style.css?v=1001">
+
+    
+
+    <style>
+        html.hide-loader #preloader { display: none !important; }
+    </style>
+    <script>
+        if (localStorage.getItem('loaderShown') === 'true') {
+            document.documentElement.classList.add('hide-loader');
+        }
+    </script>
 </head>
 
 <body>
+    <div id="mini-loader"><div class="spinner"></div></div>
 
     <!-- Floating Particles Canvas -->
     <canvas id="particles-canvas"></canvas>
@@ -48,7 +60,6 @@
             <!-- Solar Panel Grid (Illuminating cells one by one) -->
             <g class="panel-grid-group">
                 <polygon points="50,140 150,140 165,180 35,180" fill="#1C1121" stroke="#382542" stroke-width="2" />
-                <!-- 6 Cells -->
                 <polygon class="cell-1" points="53,142 83,142 80,158 48,158" />
                 <polygon class="cell-2" points="86,142 114,142 114,158 83,158" />
                 <polygon class="cell-3" points="117,142 147,142 152,158 117,158" />
@@ -69,25 +80,25 @@
         <i class="fa-solid fa-rotate-right"></i> Play Loader Animation
     </button>
 
+
+    
+
     <!-- PREMIUM FLOATING ROUNDED TRANSFORMING NAVBAR -->
     <header id="header" class="floating-navbar">
         <div class="nav-pill-wrapper">
             <a href="#" class="logo">
-                <span class="logo-icon"><i class="fa-solid fa-bolt"></i></span>
-                <div class="logo-text">
-                    <h1>VENAARC</h1>
-                    <p>ENERGIZING TOMORROW</p>
-                </div>
+                <img src="images/logo.png" alt="Venaarc Logo" class="brand-logo">
             </a>
             <nav class="nav-menu">
                 <ul>
-                    <li><a href="#home" class="nav-link active">Home</a></li>
-                    <li><a href="#journey" class="nav-link">3D Solar Journey</a></li>
-                    <li><a href="#about" class="nav-link">About Us</a></li>
-                    <li><a href="#dashboard" class="nav-link">Live Storage</a></li>
-                    <li><a href="#solutions" class="nav-link">Solutions</a></li>
-                    <li><a href="#projects" class="nav-link">Projects</a></li>
-                    <li><a href="#contact" class="nav-link">Contact</a></li>
+                    <li><a href="index.html" class="nav-link active">Home</a></li>
+                    <li><a href="residential.html" class="nav-link">Residential Solar</a></li>
+                    <li><a href="commercial.html" class="nav-link">Commercial Solar</a></li>
+                    <li><a href="projects.html" class="nav-link">Solar Projects</a></li>
+                    <li><a href="products.html" class="nav-link">Products</a></li>
+                    <li><a href="services.html" class="nav-link">Services</a></li>
+                    <li><a href="about.html" class="nav-link">About Us</a></li>
+                    <li><a href="contact.html" class="nav-link">Contact Us</a></li>
                 </ul>
             </nav>
             <div class="nav-right-actions">
@@ -106,11 +117,11 @@
 
         <div class="container hero-content">
             <h2 class="subtitle">ENERGIZING TOMORROW</h2>
-            <h1 class="title">Powering Progress<br><span>Sustainably</span></h1>
+            <h1 class="title">Best Ongrid Solar<br><span>Installer In South India</span></h1>
             <p class="description">Venaarc is committed to delivering innovative and reliable solar energy solutions for
                 homes, businesses, and industries. Sustainable energy solutions for a brighter and cleaner future.</p>
             <div class="hero-btns">
-                <a href="#journey" class="btn btn-primary">CINEMATIC JOURNEY</a>
+                <a href="#timeline" class="btn btn-primary">CINEMATIC JOURNEY</a>
                 <a href="#about" class="btn btn-outline">LEARN MORE</a>
             </div>
 
@@ -207,152 +218,8 @@
                     </div>
                     <div class="timeline-empty"></div>
                 </div>
-
-                <!-- Step 4 -->
-                <div class="timeline-step" data-index="3">
-                    <div class="timeline-content">
-                        <div class="scene-step-num">STEP 4</div>
-                        <h2 class="scene-title">Installation</h2>
-                        <ul class="scene-description-list">
-                            <li>Panel installation</li>
-                            <li>Structural preparation</li>
-                            <li>Electrical connections</li>
-                        </ul>
-                        <div class="scene-stat-badge">
-                            <i class="fa-solid fa-screwdriver-wrench"></i> Hardware Secured
-                        </div>
-                    </div>
-                    <div class="timeline-center-node">
-                        <div class="milestone-node"></div>
-                    </div>
-                    <div class="timeline-empty"></div>
-                </div>
-
-                <!-- Step 5 -->
-                <div class="timeline-step" data-index="4">
-                    <div class="timeline-content">
-                        <div class="scene-step-num">STEP 5</div>
-                        <h2 class="scene-title">Power Generation</h2>
-                        <ul class="scene-description-list">
-                            <li>Solar energy production</li>
-                            <li>Energy conversion</li>
-                            <li>System activation</li>
-                        </ul>
-                        <div class="scene-stat-badge">
-                            <i class="fa-solid fa-bolt"></i> Grid Active
-                        </div>
-                    </div>
-                    <div class="timeline-center-node">
-                        <div class="milestone-node"></div>
-                    </div>
-                    <div class="timeline-empty"></div>
-                </div>
-
-                <!-- Step 6 -->
-                <div class="timeline-step" data-index="5">
-                    <div class="timeline-content">
-                        <div class="scene-step-num">STEP 6</div>
-                        <h2 class="scene-title">Energy Storage</h2>
-                        <ul class="scene-description-list">
-                            <li>Battery systems</li>
-                            <li>Backup power</li>
-                            <li>Energy management</li>
-                        </ul>
-                        <div class="scene-stat-badge">
-                            <i class="fa-solid fa-battery-full"></i> Batteries Charged
-                        </div>
-                    </div>
-                    <div class="timeline-center-node">
-                        <div class="milestone-node"></div>
-                    </div>
-                    <div class="timeline-empty"></div>
-                </div>
-
-                <!-- Step 7 -->
-                <div class="timeline-step" data-index="6">
-                    <div class="timeline-content">
-                        <div class="scene-step-num">STEP 7</div>
-                        <h2 class="scene-title">Smart Monitoring</h2>
-                        <ul class="scene-description-list">
-                            <li>Real-time analytics</li>
-                            <li>Consumption tracking</li>
-                            <li>Performance optimization</li>
-                        </ul>
-                        <div class="scene-stat-badge">
-                            <i class="fa-solid fa-chart-line"></i> Data Synced
-                        </div>
-                    </div>
-                    <div class="timeline-center-node">
-                        <div class="milestone-node"></div>
-                    </div>
-                    <div class="timeline-empty"></div>
-                </div>
-
-                <!-- Step 8 -->
-                <div class="timeline-step" data-index="7">
-                    <div class="timeline-content">
-                        <div class="scene-step-num">STEP 8</div>
-                        <h2 class="scene-title">Sustainable Future</h2>
-                        <ul class="scene-description-list">
-                            <li>Residential solutions</li>
-                            <li>Commercial solutions</li>
-                            <li>Electric vehicle integration</li>
-                            <li>Community energy networks</li>
-                        </ul>
-                        <div class="scene-stat-badge">
-                            <i class="fa-solid fa-leaf"></i> Zero Emissions
-                        </div>
-                    </div>
-                    <div class="timeline-center-node">
-                        <div class="milestone-node"></div>
-                    </div>
-                    <div class="timeline-empty"></div>
-                </div>
             </div>
-        </div>
-    </section>
 
-    <!-- Statistics Section -->
-    <section class="statistics-section">
-        <div class="container">
-            <div class="stats-card scroll-animate" id="stats-container">
-                <div class="stats-grid">
-                    <div class="stat-item">
-                        <div class="stat-value-wrapper">
-                            <h3 class="counter" data-target="150">0</h3>
-                            <span class="plus">+</span>
-                        </div>
-                        <p class="stat-label">Projects Completed</p>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-value-wrapper">
-                            <h3 class="counter" data-target="50">0</h3>
-                            <span class="plus">+</span>
-                        </div>
-                        <p class="stat-label">MW Installed</p>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-value-wrapper">
-                            <h3 class="counter" data-target="100">0</h3>
-                            <span class="plus">+</span>
-                        </div>
-                        <p class="stat-label">Happy Clients</p>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-value-wrapper">
-                            <h3 class="counter" data-target="5">0</h3>
-                            <span class="plus">+</span>
-                        </div>
-                        <p class="stat-label">Years of Excellence</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- 2. Battery Charging Loading & Energy Dashboard Animation Section -->
-    <section id="dashboard" class="section-padding bg-darker">
-        <div class="container">
             <div class="section-header text-center">
                 <h4 class="section-subtitle">REAL-TIME TELEMETRY</h4>
                 <h2 class="section-title">Solar Energy & Storage Flow</h2>
@@ -414,40 +281,47 @@
                     </div>
                 </div>
             </div>
+        
         </div>
     </section>
 
-    <!-- About Us Section -->
-    <section id="about" class="about section-padding">
-        <div class="container about-container">
-            <div class="about-text scroll-animate slide-left">
-                <h4 class="section-subtitle">ABOUT US</h4>
-                <h2 class="section-title">Who We Are</h2>
-                <p>At Venaarc, our story is one of innovation and commitment to a greener planet. Our vision is to
-                    democratize renewable energy and make it accessible to everyone. Our mission is to provide top-tier,
-                    reliable, and efficient solar solutions.</p>
-                <p>With a highly experienced team of engineers and sustainability experts, we carry all major
-                    certifications and adhere to the highest industry standards. Customers trust us for our
-                    transparency, quality, and unwavering post-installation support.</p>
-                <ul class="about-list">
-                    <li><i class="fa-solid fa-check"></i> Certified Professionals</li>
-                    <li><i class="fa-solid fa-check"></i> Award-winning Service</li>
-                    <li><i class="fa-solid fa-check"></i> 24/7 Customer Support</li>
-                </ul>
-            </div>
-            <div class="about-image scroll-animate slide-right">
-                <div class="image-wrapper">
-                    <img src="images/project_commercial_1786602265738.png" alt="Commercial Solar Project">
-                    <div class="experience-badge">
-                        <h3>5+</h3>
-                        <p>Years<br>Experience</p>
+    <!-- Statistics Section -->
+    <section class="statistics-section">
+        <div class="container">
+            <div class="stats-card scroll-animate" id="stats-container">
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <div class="stat-value-wrapper">
+                            <h3 class="counter" data-target="150">0</h3>
+                            <span class="plus">+</span>
+                        </div>
+                        <p class="stat-label">Projects Completed</p>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value-wrapper">
+                            <h3 class="counter" data-target="50">0</h3>
+                            <span class="plus">+</span>
+                        </div>
+                        <p class="stat-label">MW Installed</p>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value-wrapper">
+                            <h3 class="counter" data-target="100">0</h3>
+                            <span class="plus">+</span>
+                        </div>
+                        <p class="stat-label">Happy Clients</p>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value-wrapper">
+                            <h3 class="counter" data-target="5">0</h3>
+                            <span class="plus">+</span>
+                        </div>
+                        <p class="stat-label">Years of Excellence</p>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
-
-    <!-- Solutions Section -->
+    </section><!-- Solutions Section -->
     <section id="solutions" class="solutions section-padding bg-darker">
         <div class="container">
             <div class="section-header text-center">
@@ -485,6 +359,111 @@
                     <i class="fa-solid fa-plug-circle-bolt"></i>
                     <h3>Other Services</h3>
                     <p>Energy audits, net metering assistance, and smart grid integrations.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Solar Savings Calculator -->
+    <section id="calculator" class="calculator section-padding bg-darker">
+        <div class="container">
+            <div class="section-header text-center">
+                <h4 class="section-subtitle">ESTIMATE YOUR SAVINGS</h4>
+                <h2 class="section-title">TN Solar Bill Calculator</h2>
+                <p>Enter your Tamil Nadu EB bill amount to estimate your solar system size, cost, and payback period.</p>
+            </div>
+            
+            <div class="solar-calculator-grid">
+                <!-- Left: Calculator Component -->
+                <div class="calc-wrap scroll-animate slide-left">
+                    <p class="calc-title">Solar Savings Calculator</p>
+                    <p class="calc-sub">Optimize your energy costs with Venaarc.</p>
+
+                    <div class="field-row">
+                        <span class="field-label">Bill amount</span>
+                        <span class="rupee-symbol">₹</span>
+                        <input type="number" id="billAmt" class="calc-input" value="3000" min="0" step="1">
+                    </div>
+
+                    <div class="field-row">
+                        <span class="field-label">Billing cycle</span>
+                        <select id="cycle" class="calc-select">
+                            <option value="1">Monthly bill</option>
+                            <option value="2" selected>2-month bill (TNEB standard)</option>
+                        </select>
+                    </div>
+
+                    <div class="units-box">
+                        <p class="units-box-label">Estimated consumption</p>
+                        <div class="units-value-row">
+                            <span class="units-value" id="unitsOut">0</span>
+                            <span class="units-unit">units / cycle</span>
+                            <span class="units-monthly" id="unitsMonthly">(0 / month)</span>
+                        </div>
+                    </div>
+
+                    <div class="stat-grid">
+                        <div class="stat-card">
+                            <p class="stat-card-label">Recommended system</p>
+                            <p class="stat-card-value" id="kwOut">0 kW</p>
+                        </div>
+                        <div class="stat-card">
+                            <p class="stat-card-label">Yearly savings</p>
+                            <p class="stat-card-value" id="saveOut">₹0</p>
+                        </div>
+                    </div>
+
+                    <div class="detail-box">
+                        <div class="detail-row">
+                            <span class="detail-label">System cost</span>
+                            <span class="detail-value" id="costOut">₹0</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-label">PM Surya Ghar subsidy</span>
+                            <span class="detail-value positive" id="subOut">-₹0</span>
+                        </div>
+                        <div class="detail-row total">
+                            <span class="detail-label">Your net cost</span>
+                            <span class="detail-value accent" id="netOut">₹0</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-label">Payback period</span>
+                            <span class="detail-value" id="paybackOut">0 yrs</span>
+                        </div>
+                    </div>
+
+                    <p class="foot-note">System sizing is approximate based on Tamil Nadu residential tariff slabs. For an exact quote, fill out the form.</p>
+                </div>
+
+                <!-- Right: Lead Capture Form -->
+                <div class="calc-wrap scroll-animate slide-right">
+                    <p class="calc-title">Get a Precise Quote</p>
+                    <p class="calc-sub">Share your details and our experts will contact you with a customized proposal.</p>
+                    
+                    <form class="calc-quote-form" onsubmit="event.preventDefault(); alert('Request submitted successfully!');">
+                        <div class="form-group">
+                            <input type="text" placeholder="Full Name" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" placeholder="Email Address" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="tel" placeholder="Phone Number / WhatsApp" required>
+                        </div>
+                        <div class="form-group">
+                            <select id="property-type" class="calc-select" required>
+                                <option value="" disabled selected>Property Type</option>
+                                <option value="residential">Residential Home</option>
+                                <option value="commercial">Commercial Building</option>
+                                <option value="industrial">Industrial Shed</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <textarea rows="3" placeholder="Additional Notes (e.g. Roof type, shaded areas)"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-block">Request Free Consultation</button>
+                    </form>
                 </div>
             </div>
         </div>
@@ -750,6 +729,38 @@
         </div>
     </section>
 
+    <!-- About Us Section -->
+    <section id="about" class="about section-padding">
+        <div class="container about-container">
+            <div class="about-text scroll-animate slide-left">
+                <h4 class="section-subtitle">ABOUT US</h4>
+                <h2 class="section-title">Who We Are</h2>
+                <p>At Venaarc, our story is one of innovation and commitment to a greener planet. Our vision is to
+                    democratize renewable energy and make it accessible to everyone. Our mission is to provide top-tier,
+                    reliable, and efficient solar solutions.</p>
+                <p>With a highly experienced team of engineers and sustainability experts, we carry all major
+                    certifications and adhere to the highest industry standards. Customers trust us for our
+                    transparency, quality, and unwavering post-installation support.</p>
+                <ul class="about-list">
+                    <li><i class="fa-solid fa-check"></i> Certified Professionals</li>
+                    <li><i class="fa-solid fa-check"></i> Award-winning Service</li>
+                    <li><i class="fa-solid fa-check"></i> 24/7 Customer Support</li>
+                </ul>
+            </div>
+            <div class="about-image scroll-animate slide-right">
+                <div class="image-wrapper">
+                    <img src="images/project_commercial_1786602265738.png" alt="Commercial Solar Project">
+                    <div class="experience-badge">
+                        <h3>5+</h3>
+                        <p>Years<br>Experience</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    
+
     <!-- Contact & Quote Section -->
     <section id="contact" class="contact section-padding bg-darker">
         <div class="container contact-container">
@@ -823,10 +834,7 @@
         <div class="container footer-container">
             <div class="footer-brand">
                 <a href="#" class="logo">
-                    <span class="logo-icon"><i class="fa-solid fa-bolt"></i></span>
-                    <div class="logo-text">
-                        <h2>VENAARC</h2>
-                    </div>
+                    <img src="images/logo.png" alt="Venaarc Logo" class="brand-logo footer-brand-logo">
                 </a>
                 <p>Powering progress sustainably. We are dedicated to providing the best renewable energy solutions for
                     a cleaner future.</p>
@@ -841,10 +849,9 @@
                 <h3>Quick Links</h3>
                 <ul>
                     <li><a href="#home">Home</a></li>
-                    <li><a href="#journey">3D Solar Journey</a></li>
+                    <li><a href="#solutions">Solutions</a></li>
+                    <li><a href="#projects">Projects</a></li>
                     <li><a href="#about">About Us</a></li>
-                    <li><a href="#dashboard">Live Telemetry</a></li>
-                    <li><a href="#projects">Our Work</a></li>
                     <li><a href="#contact">Contact</a></li>
                 </ul>
             </div>
@@ -863,7 +870,7 @@
         </div>
     </footer>
 
-    <script src="script.js?v=8"></script>
+    <script src="script.js?v=999"></script>
 </body>
 
 </html>

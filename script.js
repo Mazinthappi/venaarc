@@ -5,9 +5,11 @@ const btnReplay = document.getElementById('btn-replay');
 
 let loaderInterval;
 
+
 function startLoaderAnimation() {
     if (!preloader || !loaderPerc) return;
 
+    preloader.style.display = 'flex';
     preloader.classList.remove('fade-out');
     let count = 0;
     loaderPerc.innerText = '0%';
@@ -21,14 +23,30 @@ function startLoaderAnimation() {
             clearInterval(loaderInterval);
             setTimeout(() => {
                 preloader.classList.add('fade-out');
+                setTimeout(() => {
+                    preloader.style.display = 'none';
+                }, 300);
             }, 150);
         }
-    }, 25); // Faster 1-second total loading time
+    }, 25);
 }
 
-// Initial preloader run
+// Page Reveal Logic
 window.addEventListener('load', () => {
-    startLoaderAnimation();
+    const miniLoader = document.getElementById('mini-loader');
+    
+    if (document.getElementById('preloader')) {
+        // We are on index.html, let the big loader handle it
+        if(miniLoader) miniLoader.style.display = 'none';
+        startLoaderAnimation();
+    } else {
+        // We are on an inner page, hide the mini loader
+        if(miniLoader) {
+            setTimeout(() => {
+                miniLoader.classList.add('fade-out');
+            }, 300); // Show mini loader for 300ms before revealing page
+        }
+    }
 });
 
 // Replay Preloader Button Click
@@ -100,6 +118,27 @@ function handleNavbarScrollTransformation() {
 }
 
 window.addEventListener('scroll', handleNavbarScrollTransformation);
+
+// Page Transition Logic for Navbar Links (Mini Loader)
+document.querySelectorAll('.nav-menu a.nav-link').forEach(link => {
+    link.addEventListener('click', (e) => {
+        const href = link.getAttribute('href');
+        if (href && !href.startsWith('#') && href !== window.location.pathname.split('/').pop()) {
+            e.preventDefault();
+            const miniLoader = document.getElementById('mini-loader');
+            if(miniLoader) {
+                miniLoader.style.display = 'flex';
+                miniLoader.classList.remove('fade-out');
+                miniLoader.style.visibility = 'visible';
+                miniLoader.style.opacity = '1';
+            }
+            
+            setTimeout(() => {
+                window.location.href = href;
+            }, 300); // Wait for mini-loader to fade in
+        }
+    });
+});
 
 // INTERACTIVE SOLAR TIMELINE SCRIPT
 const timelineWrapper = document.querySelector('.timeline-wrapper');
@@ -359,3 +398,99 @@ if (canvas) {
     }
     animateParticles();
 }
+
+// TN Solar Bill Calculator Logic
+(function() {
+  const billAmtInput = document.getElementById('billAmt');
+  const cycleSelect = document.getElementById('cycle');
+  if (!billAmtInput || !cycleSelect) return;
+
+  var slabs = [
+    [0, 100, 0],
+    [100, 400, 4.70],
+    [400, 500, 6.30],
+    [500, 600, 8.40],
+    [600, 800, 9.45],
+    [800, 1000, 10.50],
+    [1000, Infinity, 11.55]
+  ];
+
+  var COST_PER_KW = 70000;
+  var MAX_KW = 10;
+
+  function subsidyFor(kw) {
+    if (kw <= 1) return 30000;
+    if (kw === 2) return 60000;
+    return 78000;
+  }
+
+  function slabBill(units) {
+    var bill = 0, remaining = units;
+    for (var i = 0; i < slabs.length; i++) {
+      var lo = slabs[i][0], hi = slabs[i][1], rate = slabs[i][2];
+      var band = Math.min(remaining, hi - lo);
+      if (band <= 0) break;
+      bill += band * rate;
+      remaining -= band;
+    }
+    return bill;
+  }
+
+  function unitsFromBill(targetBill) {
+    if (targetBill <= 0) return 0;
+    var lo = 0, hi = 5000;
+    for (var i = 0; i < 40; i++) {
+      var mid = (lo + hi) / 2;
+      if (slabBill(mid) < targetBill) lo = mid; else hi = mid;
+    }
+    return Math.round((lo + hi) / 2);
+  }
+
+  function sizeSolar(monthlyUnits) {
+    var unitsPerKwMonth = 150;
+    var kwNeeded = monthlyUnits / unitsPerKwMonth;
+    var kw = Math.ceil(kwNeeded);
+    if (kw < 1) kw = 1;
+    if (kw > MAX_KW) kw = MAX_KW;
+    return kw;
+  }
+
+  function costFor(kw) {
+    return kw * COST_PER_KW;
+  }
+
+  function fmt(n) {
+    return '₹' + Math.round(n).toLocaleString('en-IN');
+  }
+
+  function recompute() {
+    var bill = parseFloat(document.getElementById('billAmt').value) || 0;
+    var cycleMonths = parseInt(document.getElementById('cycle').value, 10);
+
+    var units = unitsFromBill(bill);
+    var monthlyUnits = units / cycleMonths;
+
+    document.getElementById('unitsOut').textContent = units.toLocaleString('en-IN');
+    document.getElementById('unitsMonthly').textContent = '(' + Math.round(monthlyUnits).toLocaleString('en-IN') + ' / month)';
+
+    var kw = sizeSolar(monthlyUnits);
+    var cost = costFor(kw);
+    var subsidy = subsidyFor(kw);
+    var net = cost - subsidy;
+
+    var annualBill = slabBill(monthlyUnits) * 12;
+    var annualSavings = annualBill;
+    var payback = annualSavings > 0 ? net / annualSavings : 0;
+
+    document.getElementById('kwOut').textContent = kw + ' kW';
+    document.getElementById('saveOut').textContent = fmt(annualSavings);
+    document.getElementById('costOut').textContent = fmt(cost);
+    document.getElementById('subOut').textContent = '-' + fmt(subsidy);
+    document.getElementById('netOut').textContent = fmt(net);
+    document.getElementById('paybackOut').textContent = (payback > 0 ? payback.toFixed(1) : '0') + ' yrs';
+  }
+
+  billAmtInput.addEventListener('input', recompute);
+  cycleSelect.addEventListener('change', recompute);
+  recompute();
+})();
