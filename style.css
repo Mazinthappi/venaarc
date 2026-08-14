@@ -50,6 +50,8 @@ body {
     transition: background-color 0.5s ease, color 0.5s ease;
 }
 
+
+
 /* Floating Particles Canvas */
 #particles-canvas {
     position: fixed;
@@ -1883,4 +1885,248 @@ footer {
     .projects-grid {
         grid-template-columns: 1fr;
     }
+}
+
+html.hide-loader #preloader {
+    display: none !important;
+}
+
+/* Mini Loader */
+#mini-loader {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: var(--bg-darker);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9998;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+#mini-loader.fade-out {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.spinner {
+    width: 40px;
+    height: 40px;
+    border: 3px solid rgba(230, 28, 36, 0.2);
+    border-top: 3px solid var(--primary-red);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* TN Solar Bill Calculator Styles */
+.solar-calculator-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    align-items: flex-start;
+}
+@media (max-width: 992px) {
+    .solar-calculator-grid {
+        grid-template-columns: 1fr;
+    }
+}
+.calc-wrap {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 14px;
+    padding: 30px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    color: var(--text-light);
+}
+body.day-mode .calc-wrap {
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+}
+.calc-title {
+    font-size: 22px;
+    font-weight: 700;
+    margin: 0 0 8px;
+    color: var(--text-light);
+}
+.calc-sub {
+    font-size: 14px;
+    color: var(--text-muted);
+    margin: 0 0 25px;
+}
+.field-row {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+.field-label {
+    font-size: 14px;
+    color: var(--text-light);
+    font-weight: 500;
+    min-width: 100px;
+}
+.rupee-symbol {
+    font-size: 15px;
+    color: var(--text-muted);
+    font-weight: 600;
+}
+.calc-input, .calc-select {
+    flex: 1;
+    height: 42px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 0 12px;
+    font-size: 15px;
+    font-family: inherit;
+    background: var(--bg-dark);
+    color: var(--text-light);
+    transition: var(--transition);
+}
+.calc-input:focus, .calc-select:focus {
+    outline: none;
+    border-color: var(--primary-red);
+    box-shadow: 0 0 0 3px rgba(230, 28, 36, 0.15);
+}
+.units-box {
+    background: rgba(245, 190, 11, 0.08);
+    border: 1px solid rgba(245, 190, 11, 0.2);
+    border-radius: 10px;
+    padding: 16px 20px;
+    margin: 10px 0 20px;
+}
+.units-box-label {
+    font-size: 13px;
+    color: var(--solar-yellow);
+    margin: 0 0 6px;
+    font-weight: 600;
+}
+.units-value-row {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+.units-value {
+    font-size: 26px;
+    font-weight: 700;
+    color: var(--solar-yellow);
+}
+.units-unit {
+    font-size: 14px;
+    color: var(--text-muted);
+}
+.units-monthly {
+    font-size: 13px;
+    color: var(--text-muted);
+}
+.stat-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+.stat-card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    padding: 16px;
+}
+body.day-mode .stat-card {
+    background: #F8FAFC;
+}
+.stat-card-label {
+    font-size: 13px;
+    color: var(--text-muted);
+    margin: 0 0 6px;
+}
+.stat-card-value {
+    font-size: 20px;
+    font-weight: 700;
+    margin: 0;
+    color: var(--text-light);
+}
+.detail-box {
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    padding: 8px 18px;
+    margin-bottom: 16px;
+    background: rgba(0,0,0,0.1);
+}
+.detail-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 0;
+    font-size: 14px;
+    border-bottom: 1px solid var(--border-color);
+}
+.detail-row:last-child { border-bottom: none; }
+.detail-row.total {
+    border-top: 1px dashed var(--border-color);
+    font-weight: 700;
+    font-size: 16px;
+    padding-top: 14px;
+    margin-top: 2px;
+}
+.detail-label { color: var(--text-muted); }
+.detail-value { font-weight: 600; color: var(--text-light); }
+.detail-value.positive { color: #10B981; } /* Green for subsidy */
+.detail-value.accent { color: var(--primary-red); font-size: 18px; }
+.foot-note {
+    font-size: 12px;
+    color: var(--text-muted);
+    margin: 15px 0 0;
+    line-height: 1.5;
+    font-style: italic;
+}
+
+/* Quote Form inside Calculator Section */
+.calc-quote-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    height: 100%;
+}
+.calc-quote-form .form-group {
+    margin-bottom: 0;
+}
+.calc-quote-form input, .calc-quote-form select, .calc-quote-form textarea {
+    width: 100%;
+    padding: 14px 16px;
+    border: 1px solid var(--border-color);
+    background: var(--bg-dark);
+    color: var(--text-light);
+    border-radius: 8px;
+    font-family: var(--font-primary);
+    font-size: 14px;
+    transition: var(--transition);
+}
+.calc-quote-form input:focus, .calc-quote-form select:focus, .calc-quote-form textarea:focus {
+    outline: none;
+    border-color: var(--primary-red);
+    box-shadow: 0 0 0 3px rgba(230, 28, 36, 0.15);
+}
+.calc-quote-form button {
+    margin-top: auto;
+    padding: 16px;
+    font-size: 16px;
+}
+
+/* Brand Logo Styling */
+.brand-logo {
+    height: 40px;
+    width: auto;
+    object-fit: contain;
+    mix-blend-mode: lighten; /* Drops the black background */
+    transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1), height 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+}
+#header.floating-navbar.scrolled .brand-logo {
+    height: 32px;
+}
+.footer-brand-logo {
+    height: 50px;
+    margin-bottom: 15px;
 }

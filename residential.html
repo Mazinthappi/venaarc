@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Residential Solar | Venaarc Solar Solutions</title>
+    <meta name="description"
+        content="Venaarc is committed to delivering innovative and reliable solar energy solutions for homes, businesses, and industries. Powering progress sustainably.">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css?v=8">
+
+    
+
+    <style>
+        html.hide-loader #preloader { display: none !important; }
+    </style>
+    <script>
+        if (localStorage.getItem('loaderShown') === 'true') {
+            document.documentElement.classList.add('hide-loader');
+        }
+    </script>
+</head>
+
+<body>
+    <div id="mini-loader"><div class="spinner"></div></div>
+
+    <!-- Floating Particles Canvas -->
+    <canvas id="particles-canvas"></canvas>
+
+    
+
+    <!-- PREMIUM FLOATING ROUNDED TRANSFORMING NAVBAR -->
+    <header id="header" class="floating-navbar">
+        <div class="nav-pill-wrapper">
+            <a href="#" class="logo">
+                <span class="logo-icon"><i class="fa-solid fa-bolt"></i></span>
+                <div class="logo-text">
+                    <h1>VENAARC</h1>
+                    <p>ENERGIZING TOMORROW</p>
+                </div>
+            </a>
+            <nav class="nav-menu">
+                <ul>
+                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li><a href="residential.html" class="nav-link active">Residential Solar</a></li>
+                    <li><a href="commercial.html" class="nav-link">Commercial Solar</a></li>
+                    <li><a href="projects.html" class="nav-link">Solar Projects</a></li>
+                    <li><a href="products.html" class="nav-link">Products</a></li>
+                    <li><a href="services.html" class="nav-link">Services</a></li>
+                    <li><a href="about.html" class="nav-link">About Us</a></li>
+                    <li><a href="contact.html" class="nav-link">Contact Us</a></li>
+                </ul>
+            </nav>
+            <div class="nav-right-actions">
+                <button class="theme-toggle-btn" id="theme-toggle" title="Toggle Day/Night Mode">
+                    <i class="fa-solid fa-sun"></i>
+                </button>
+                <a href="#quote" class="btn btn-primary nav-cta">GET A QUOTE</a>
+                <button class="mobile-toggle"><i class="fa-solid fa-bars"></i></button>
+            </div>
+        </div>
+    </header>
+
+
+    <!-- Hero Section -->
+    <section id="residential-hero" class="hero" style="background-image: url('images/hero_background_1786601991936.png'); min-height: 60vh;">
+        <div class="hero-overlay"></div>
+        <div class="container hero-content text-center" style="align-items: center;">
+            <h2 class="subtitle">POWER YOUR HOME</h2>
+            <h1 class="title">Home Solar<br><span>Solutions</span></h1>
+            <p class="description" style="max-width: 700px; margin: 0 auto 30px;">Cut your electricity bills with a PM Surya Ghar-eligible rooftop solar system. DCR-compliant panels, fast net metering approval, and quick ROI built for Indian homes.</p>
+            <div class="hero-btns justify-content-center" style="justify-content: center;">
+                <a href="#calculator" class="btn btn-primary">CALCULATE SAVINGS</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Homeowners Choose Solar -->
+    <section class="section-padding">
+        <div class="container text-center">
+            <h4 class="section-subtitle">THE ADVANTAGE</h4>
+            <h2 class="section-title">Why Homeowners Choose Solar</h2>
+            <div class="solutions-grid" style="margin-top: 40px;">
+                <div class="solution-card scroll-animate">
+                    <i class="fa-solid fa-piggy-bank"></i>
+                    <h3>Massive Cost Savings</h3>
+                    <p>Drastically reduce or eliminate your monthly electricity bills from day one. Lock in your energy rates for decades.</p>
+                </div>
+                <div class="solution-card scroll-animate">
+                    <i class="fa-solid fa-house-circle-check"></i>
+                    <h3>Property Value Increase</h3>
+                    <p>Homes equipped with solar energy systems sell for significantly more and faster than non-solar homes.</p>
+                </div>
+                <div class="solution-card scroll-animate">
+                    <i class="fa-solid fa-earth-americas"></i>
+                    <h3>Environmental Impact</h3>
+                    <p>Reduce reliance on fossil fuels. A standard home solar system offsets tons of CO2 emissions annually.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- System Options -->
+    <section class="section-padding bg-darker">
+        <div class="container">
+            <div class="section-header text-center">
+                <h4 class="section-subtitle">CUSTOMIZATION</h4>
+                <h2 class="section-title">Residential System Options</h2>
+                <p>We design systems customized to your roof space, energy consumption, and storage needs.</p>
+            </div>
+            <div class="products-grid">
+                <div class="product-card scroll-animate">
+                    <div class="product-icon"><i class="fa-solid fa-plug"></i></div>
+                    <h3>Grid-Tied Systems</h3>
+                    <p>Stay connected to the local grid. Generate power during the day and use grid power at night, utilizing Net Metering for maximum ROI.</p>
+                </div>
+                <div class="product-card scroll-animate">
+                    <div class="product-icon"><i class="fa-solid fa-car-battery"></i></div>
+                    <h3>Hybrid Systems</h3>
+                    <p>Combine grid connection with battery backup. Keep essential appliances running seamlessly during power outages.</p>
+                </div>
+                <div class="product-card scroll-animate">
+                    <div class="product-icon"><i class="fa-solid fa-house-crack"></i></div>
+                    <h3>Off-Grid Systems</h3>
+                    <p>Achieve total energy independence. Perfect for remote homes with robust battery banks to store days of power.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Shared Calculator & Process (Copied from Home) -->
+    
+    <!-- Solar Savings Calculator -->
+    <section id="calculator" class="calculator section-padding bg-darker">
+        <div class="container">
+            <div class="section-header text-center">
+                <h4 class="section-subtitle">ESTIMATE YOUR SAVINGS</h4>
+                <h2 class="section-title">Solar Savings Calculator</h2>
+                <p>Discover how much you could save by switching to Venaarc Solar Solutions.</p>
+            </div>
+            <div class="calculator-container" style="background: #fff; padding: 40px; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); max-width: 800px; margin: 0 auto; color: #333;">
+                <div style="display: flex; flex-direction: column; gap: 20px;">
+                    <div>
+                        <label style="font-weight: 600; margin-bottom: 10px; display: block;">Average Monthly Electricity Bill ($)</label>
+                        <input type="range" min="50" max="1000" step="10" value="200" style="width: 100%;">
+                        <div style="text-align: right; font-weight: bold; font-size: 1.2rem; color: var(--primary-red);">$200</div>
+                    </div>
+                    <div>
+                        <label style="font-weight: 600; margin-bottom: 10px; display: block;">Available Roof Space (sq. ft.)</label>
+                        <input type="range" min="200" max="5000" step="100" value="1000" style="width: 100%;">
+                        <div style="text-align: right; font-weight: bold; font-size: 1.2rem; color: var(--primary-red);">1,000 sq ft</div>
+                    </div>
+                    <div style="background: rgba(230, 28, 36, 0.1); padding: 20px; border-radius: 10px; text-align: center; margin-top: 20px;">
+                        <h3 style="color: var(--primary-red); font-size: 2rem; margin-bottom: 5px;">$65,000+</h3>
+                        <p style="margin: 0; font-weight: 500;">Estimated 25-Year Lifetime Savings</p>
+                    </div>
+                    <a href="contact.html" class="btn btn-primary" style="text-align: center; display: block; margin-top: 10px;">Get a Precise Quote</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Call to Action -->
+    <section class="section-padding" style="background: var(--primary-red); color: white; text-align: center;">
+        <div class="container">
+            <h2 style="font-size: 2.5rem; font-weight: 700; margin-bottom: 20px; color: white;">Ready to Power Your Home?</h2>
+            <p style="font-size: 1.1rem; max-width: 600px; margin: 0 auto 30px;">Join thousands of homeowners who have switched to clean, affordable solar energy with Venaarc.</p>
+            <a href="contact.html" class="btn" style="background: white; color: var(--primary-red); font-weight: bold; padding: 15px 30px; border-radius: 30px;">GET A FREE HOME ASSESSMENT</a>
+        </div>
+    </section>
+    
+<footer>
+        <div class="container footer-container">
+            <div class="footer-brand">
+                <a href="#" class="logo">
+                    <span class="logo-icon"><i class="fa-solid fa-bolt"></i></span>
+                    <div class="logo-text">
+                        <h2>VENAARC</h2>
+                    </div>
+                </a>
+                <p>Powering progress sustainably. We are dedicated to providing the best renewable energy solutions for
+                    a cleaner future.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#"><i class="fa-brands fa-youtube"></i></a>
+                    <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
+                </div>
+            </div>
+            <div class="footer-links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#solutions">Solutions</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h3>Services</h3>
+                <ul>
+                    <li><a href="#">Residential Solar</a></li>
+                    <li><a href="#">Commercial Solar</a></li>
+                    <li><a href="#">Solar EPC</a></li>
+                    <li><a href="#">Maintenance</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom text-center">
+            <p>&copy; 2026 Venaarc. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js?v=11"></script>
+</body>
+
+</html>
