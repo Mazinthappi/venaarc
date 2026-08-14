@@ -2237,6 +2237,22 @@ body.day-mode .stat-card {
     .section-title {
         font-size: 28px !important;
     }
+    
+    /* Fix oversized hero buttons on mobile */
+    .hero-btns {
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+        width: 100%;
+    }
+    .hero-btns .btn {
+        width: 100%;
+        text-align: center;
+        padding: 14px 20px;
+        font-size: 13px;
+        justify-content: center;
+    }
+    
     .hero-features {
         grid-template-columns: 1fr;
     }
@@ -2247,5 +2263,22 @@ body.day-mode .stat-card {
     }
     .contact-item .icon {
         margin-bottom: 10px;
+    }
+    
+    /* Calculator Responsiveness */
+    .field-row {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 8px;
+        margin-bottom: 15px;
+    }
+    .field-label {
+        min-width: 100%;
+    }
+    .stat-grid {
+        grid-template-columns: 1fr;
+    }
+    .calc-wrap {
+        padding: 20px;
     }
 }
